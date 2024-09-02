@@ -1,8 +1,18 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import json
 from typing import Dict, List
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins, adjust as needed
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods, adjust as needed
+    allow_headers=["*"],  # Allow all headers, adjust as needed
+)
 
 # Load the JSON data
 with open("data.json", "r") as f:
